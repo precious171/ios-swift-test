@@ -10,11 +10,13 @@ import UIKit
 
 class NoteViewController: UIViewController, UITextViewDelegate {
     //required outlets for visual components
+    
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
     @IBOutlet weak var detailView: UITextView!
     var Data:noteModel?
     var index:Int?
     var fromCont:Int?
+    var delegate:maintableDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +30,33 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     
     
     @objc func rightButtonAction(){
-
+        detailView.resignFirstResponder()
+        self.navigationItem.rightBarButtonItem = nil
+        self.Data?.detail = self.detailView.text
+        
+        
+        if let firstParagraph = self.detailView.text.components(separatedBy: CharacterSet.newlines).first {
+            self.Data?.title = firstParagraph
+            self.navigationItem.title = firstParagraph
+        }
+        let df = DateFormatter()
+        df.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        self.Data?.last_modified = df.string(from: Date())
+        self.delegate?.saveupdate(noteValue: Data!, index: self.index!,from:self.fromCont!)
     }
     
     
     
     func textViewDidChange(_ textView: UITextView) {
-     
+        let rightButtonItem = UIBarButtonItem.init(
+            title: "Save",
+            style: .done,
+            target: self,
+            action: #selector(rightButtonAction)
+        )
+        
+        
+        self.navigationItem.rightBarButtonItem = rightButtonItem
     }
     
     

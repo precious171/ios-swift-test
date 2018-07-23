@@ -6,6 +6,7 @@ target 'TestApp' do
   use_frameworks!
 pod 'SVProgressHUD'
 pod 'NVActivityIndicatorView'
+ pod 'SwiftGifOrigin'
   # Pods for TestApp
 
 end

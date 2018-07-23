@@ -15,6 +15,61 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Hint Controller-->
+        <scene sceneID="Bwa-8S-ui6">
+            <objects>
+                <viewController id="pdC-dH-tmT" customClass="HintController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ln1-Jh-N9P"/>
+                        <viewControllerLayoutGuide type="bottom" id="25p-Wl-mWR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Wn-qD-4Fj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hintvideo.gif" translatesAutoresizingMaskIntoConstraints="NO" id="UXq-hd-Van">
+                                <rect key="frame" x="15" y="173.5" width="345" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="hf1-YB-jA5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Slide left to delete note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0h-mw-GSS">
+                                <rect key="frame" x="40" y="136.5" width="295" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fG-KP-YYY">
+                                <rect key="frame" x="158" y="398.5" width="58" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="pdC-dH-tmT" eventType="touchUpInside" id="a5S-JL-KeO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.82609160954657523" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.97447377440000005" green="0.38653028010000001" blue="0.016845859590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UXq-hd-Van" firstAttribute="centerX" secondItem="0Wn-qD-4Fj" secondAttribute="centerX" id="3Fi-sq-L9u"/>
+                            <constraint firstItem="9fG-KP-YYY" firstAttribute="top" secondItem="UXq-hd-Van" secondAttribute="bottom" constant="25" id="5Cd-1C-qb1"/>
+                            <constraint firstItem="UXq-hd-Van" firstAttribute="centerY" secondItem="0Wn-qD-4Fj" secondAttribute="centerY" constant="-60" id="BT1-1N-3Cv"/>
+                            <constraint firstAttribute="trailing" secondItem="l0h-mw-GSS" secondAttribute="trailing" constant="40" id="Bqd-wI-N86"/>
+                            <constraint firstAttribute="trailing" secondItem="UXq-hd-Van" secondAttribute="trailing" constant="15" id="Sum-pa-Ksd"/>
+                            <constraint firstItem="l0h-mw-GSS" firstAttribute="leading" secondItem="0Wn-qD-4Fj" secondAttribute="leading" constant="40" id="ZGo-kq-RBB"/>
+                            <constraint firstItem="UXq-hd-Van" firstAttribute="leading" secondItem="0Wn-qD-4Fj" secondAttribute="leading" constant="15" id="pRE-gH-hHK"/>
+                            <constraint firstItem="9fG-KP-YYY" firstAttribute="centerX" secondItem="0Wn-qD-4Fj" secondAttribute="centerX" id="tQQ-lN-i00"/>
+                            <constraint firstItem="UXq-hd-Van" firstAttribute="top" secondItem="l0h-mw-GSS" secondAttribute="bottom" constant="15" id="wwf-Fi-ahP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="hintimage" destination="UXq-hd-Van" id="loM-fl-1ac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="szd-FD-1vd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1537" y="-801"/>
+        </scene>
         <!--AlayaNotes-->
         <scene sceneID="M52-RC-ag2">
             <objects>
@@ -137,6 +192,7 @@
                         <outlet property="noteCountLabel" destination="NZ5-dx-6mv" id="Bpp-O8-kae"/>
                         <outlet property="tableView" destination="YRc-c4-K8u" id="Vv5-5x-06q"/>
                         <segue destination="Ed7-zg-0EG" kind="show" identifier="showDetail" id="Zlc-Km-8li"/>
+                        <segue destination="pdC-dH-tmT" kind="presentation" identifier="showHint" modalPresentationStyle="overCurrentContext" id="8dC-Ul-k4W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YDU-z3-IZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,5 +274,6 @@
     </scenes>
     <resources>
         <image name="alayalogo.png" width="352" height="172"/>
+        <image name="hintvideo.gif" width="480" height="344"/>
     </resources>
 </document>

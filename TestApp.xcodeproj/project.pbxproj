@@ -22,6 +22,9 @@
 		E6CAD9B82105C97600A6EAF0 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9B72105C97600A6EAF0 /* MainController.swift */; };
 		E6CAD9BB2105CA0200A6EAF0 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9B92105CA0200A6EAF0 /* NoteTableCell.swift */; };
 		E6CAD9BC2105CA0200A6EAF0 /* NoteTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6CAD9BA2105CA0200A6EAF0 /* NoteTableCell.xib */; };
+		E6CAD9BF2105D7B100A6EAF0 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9BE2105D7B100A6EAF0 /* extensions.swift */; };
+		E6CAD9C32105DA4600A6EAF0 /* hintvideo.gif in Resources */ = {isa = PBXBuildFile; fileRef = E6CAD9C22105DA4600A6EAF0 /* hintvideo.gif */; };
+		E6CAD9C52105DC7A00A6EAF0 /* HintController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9C42105DC7A00A6EAF0 /* HintController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		E6CAD9B72105C97600A6EAF0 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		E6CAD9B92105CA0200A6EAF0 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
 		E6CAD9BA2105CA0200A6EAF0 /* NoteTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableCell.xib; sourceTree = "<group>"; };
+		E6CAD9BE2105D7B100A6EAF0 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		E6CAD9C22105DA4600A6EAF0 /* hintvideo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hintvideo.gif; sourceTree = "<group>"; };
+		E6CAD9C42105DC7A00A6EAF0 /* HintController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 		8429C9C51EAECCA8004A5E2B /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				E6CAD9BD2105D78200A6EAF0 /* extension */,
 				E6CAD9B22105C8E200A6EAF0 /* fonts */,
 				E6CAD9A92105C2EC00A6EAF0 /* mockrequesthelper */,
 				E6CAD9A12105BDEA00A6EAF0 /* Images */,
@@ -114,6 +121,7 @@
 			children = (
 				8429C9DE1EAECD2C004A5E2B /* NoteViewController.swift */,
 				E6CAD9B72105C97600A6EAF0 /* MainController.swift */,
+				E6CAD9C42105DC7A00A6EAF0 /* HintController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,6 +165,7 @@
 		E6CAD9A12105BDEA00A6EAF0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E6CAD9C22105DA4600A6EAF0 /* hintvideo.gif */,
 				E6CAD9A22105C0AA00A6EAF0 /* alayalogo.png */,
 			);
 			path = Images;
@@ -178,6 +187,14 @@
 			);
 			name = fonts;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		E6CAD9BD2105D78200A6EAF0 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				E6CAD9BE2105D7B100A6EAF0 /* extensions.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +264,7 @@
 				8429C9D41EAECCA8004A5E2B /* LaunchScreen.storyboard in Resources */,
 				E6CAD9A32105C0AA00A6EAF0 /* alayalogo.png in Resources */,
 				E6CAD9B52105C92700A6EAF0 /* OpenSans-SemiBold.ttf in Resources */,
+				E6CAD9C32105DA4600A6EAF0 /* hintvideo.gif in Resources */,
 				8429C9D11EAECCA8004A5E2B /* Assets.xcassets in Resources */,
 				E6CAD9B62105C92700A6EAF0 /* OpenSans-Regular.ttf in Resources */,
 				E6CAD9BC2105CA0200A6EAF0 /* NoteTableCell.xib in Resources */,
@@ -299,11 +317,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -320,6 +340,8 @@
 				8429C9DF1EAECD2C004A5E2B /* NoteViewController.swift in Sources */,
 				8429C9E21EAECD34004A5E2B /* TestApp.xcdatamodeld in Sources */,
 				E6CAD9BB2105CA0200A6EAF0 /* NoteTableCell.swift in Sources */,
+				E6CAD9BF2105D7B100A6EAF0 /* extensions.swift in Sources */,
+				E6CAD9C52105DC7A00A6EAF0 /* HintController.swift in Sources */,
 				8429C9C71EAECCA8004A5E2B /* AshppDelegate.swift in Sources */,
 				8429C9E41EAECD48004A5E2B /* NoteModel.swift in Sources */,
 				E6CAD9B82105C97600A6EAF0 /* MainController.swift in Sources */,

@@ -9,7 +9,12 @@
 import UIKit
 import NVActivityIndicatorView
 
-class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+protocol maintableDelegate: class {
+    func saveupdate(noteValue:noteModel,index:Int,from:Int)
+}
+
+
+class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource,maintableDelegate{
     
 //outlet declaration to support view
     @IBOutlet weak var tableView: UITableView!
@@ -44,6 +49,13 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
         registerCells()
         introanimation()
         fetchdata()
+    }
+    
+    
+    func showhint(){
+        
+            self.performSegue(withIdentifier: "showHint", sender: self)
+ 
     }
     
     //function to fetch data from movk api while showing a block loading sign
@@ -101,6 +113,7 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.mainview.willRemoveSubview(self.circle)
             self.mainview.willRemoveSubview(self.logoimage)
             self.navigationController?.setNavigationBarHidden(false, animated: true)
+            self.showhint()
             
         })
     }
@@ -114,9 +127,67 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
   
 
     
-    @IBAction func ComposeNewNote(_ sender: Any) {
+    //function implementation to update note
+    func saveupdate(noteValue: noteModel,index:Int,from:Int) {
+        if(from == 0){
+            if(index < self.NoteList.count){
+                self.NoteList.remove(at: index)
+            }
+            
+            self.NoteList.insert(noteValue, at: 0)
+            self.tableView.reloadData()
+            self.prepareview()
+        }
         
     }
+    
+    
+   //implementation of addition of new note
+    @IBAction func ComposeNewNote(_ sender: Any) {
+        let df = DateFormatter()
+        df.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        let date_value = df.string(from: Date())
+        let intergervalue =  Mockapiengine.sharedManager.dataHold.count
+        
+        let newNote:noteModel = noteModel(id: (intergervalue+1), date_created: date_value, last_modified: date_value, title: "Unsaved \(intergervalue+1)", detail: "")
+        
+        self.activeIndex = intergervalue
+        self.transferNote = newNote
+        
+        self.performSegue(withIdentifier: "showDetail", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
+            // delete item at indexPath
+            
+            CATransaction.begin()
+            tableView.beginUpdates()
+            CATransaction.setCompletionBlock {
+                
+               
+                self.prepareview()
+                self.tableView.reloadData()
+                // Code to be executed upon completion
+            }
+            
+            self.NoteList.remove(at: indexPath.row)
+           tableView.deleteRows(at: [indexPath], with: .left)
+            
+            
+            tableView.endUpdates()
+            CATransaction.commit()
+            
+        }
+        delete.backgroundColor =  hexStringToUIColor(hex: "#fd7222")
+        
+        return [delete]
+    }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -168,7 +239,7 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
             destinationViewController.Data = self.transferNote
             destinationViewController.index = self.activeIndex
             destinationViewController.fromCont = 0
-          
+            destinationViewController.delegate = self
         }
         
     }
