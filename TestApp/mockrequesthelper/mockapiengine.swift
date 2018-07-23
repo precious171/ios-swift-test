@@ -1,14 +1,15 @@
 //
 //  MockApiGenerator.swift
-//  alaya est
+//  alaya test
 //
-//  Created by gHOS  on 22/7/18.
-//  Copyright © 2018 gHOS . All rights reserved.
+//  Created by Precious Osato  on 22/7/18.
+//  Copyright © 2018 Precious Osaro . All rights reserved.
 //
 
 import Foundation
 class Mockapiengine{
     
+    //converting a json string to the required struct data
     init(){
         let dataValue: Data = dataString.data(using: String.Encoding.utf8)!
         let decoder = JSONDecoder()
@@ -17,7 +18,7 @@ class Mockapiengine{
         }
     }
     
-    
+    //here a simple application of singleton
     class var sharedManager: Mockapiengine {
         struct Static {
             static let instance = Mockapiengine()
@@ -25,10 +26,8 @@ class Mockapiengine{
         return Static.instance
     }
     
-    
+    //Here is create a mock request, responding at 5 secons interval
     public func fetchData( page: Int, completion: @escaping (_ result: [noteModel]) -> Void) {
-        
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
             let min = (page * 20)
             var max = (min + 20)
@@ -49,6 +48,8 @@ class Mockapiengine{
     
     
     var dataHold:[noteModel] = []
+    
+    //json string holding the mock information
     var dataString:String = """
       [
     {

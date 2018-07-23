@@ -1,31 +1,222 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0FR-tk-JoC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Note View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--AlayaNotes-->
+        <scene sceneID="M52-RC-ag2">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NoteViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="FvK-VP-Ax4" customClass="MainController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aq1-oh-weQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="alayalogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qbl-en-19d">
+                                <rect key="frame" x="113" y="294" width="150" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="W04-FV-5Lg"/>
+                                    <constraint firstAttribute="height" constant="128" id="bb8-7n-Y8H"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZG-36-jJc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="YRc-c4-K8u">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <view key="tableFooterView" contentMode="scaleToFill" id="GFi-qd-Bzl">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aS1-YJ-e1N">
+                                                    <rect key="frame" x="177.5" y="15" width="20" height="20"/>
+                                                    <color key="color" red="0.97447377440000005" green="0.38653028010000001" blue="0.016845859590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="aS1-YJ-e1N" firstAttribute="centerX" secondItem="GFi-qd-Bzl" secondAttribute="centerX" id="M62-dP-RDz"/>
+                                                <constraint firstItem="aS1-YJ-e1N" firstAttribute="top" secondItem="GFi-qd-Bzl" secondAttribute="top" constant="15" id="Oni-l7-FL4"/>
+                                            </constraints>
+                                        </view>
+                                        <connections>
+                                            <outlet property="dataSource" destination="FvK-VP-Ax4" id="jpA-6p-nRJ"/>
+                                            <outlet property="delegate" destination="FvK-VP-Ax4" id="ZVu-SA-tow"/>
+                                        </connections>
+                                    </tableView>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbs-Bu-OKN">
+                                        <rect key="frame" x="0.0" y="559" width="375" height="44"/>
+                                        <items>
+                                            <barButtonItem springLoaded="YES" style="done" systemItem="flexibleSpace" id="4qk-UA-939">
+                                                <color key="tintColor" red="0.97447377440000005" green="0.38653028010000001" blue="0.016845859590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="compose" id="Oef-mM-0bM">
+                                                <color key="tintColor" red="0.97447377440000005" green="0.38653028010000001" blue="0.016845859590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="ComposeNewNote:" destination="FvK-VP-Ax4" id="SnV-5S-DyJ"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZ5-dx-6mv">
+                                        <rect key="frame" x="137" y="570.5" width="100" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="ABH-2x-1IW"/>
+                                            <constraint firstAttribute="width" constant="100" id="HHz-M9-OZG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="NZ5-dx-6mv" firstAttribute="centerX" secondItem="xbs-Bu-OKN" secondAttribute="centerX" id="2ND-b3-2Ph"/>
+                                    <constraint firstItem="NZ5-dx-6mv" firstAttribute="centerY" secondItem="xbs-Bu-OKN" secondAttribute="centerY" id="UUg-dg-4MW"/>
+                                    <constraint firstAttribute="bottom" secondItem="xbs-Bu-OKN" secondAttribute="bottom" id="Uoq-ow-oJ4"/>
+                                    <constraint firstItem="xbs-Bu-OKN" firstAttribute="leading" secondItem="9ZG-36-jJc" secondAttribute="leading" id="VsY-yN-xrD"/>
+                                    <constraint firstItem="YRc-c4-K8u" firstAttribute="top" secondItem="9ZG-36-jJc" secondAttribute="top" id="ev3-Ia-9E4"/>
+                                    <constraint firstItem="YRc-c4-K8u" firstAttribute="leading" secondItem="9ZG-36-jJc" secondAttribute="leading" id="llQ-en-7Xa"/>
+                                    <constraint firstAttribute="bottom" secondItem="YRc-c4-K8u" secondAttribute="bottom" id="q3a-Sh-f5Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="YRc-c4-K8u" secondAttribute="trailing" id="q9r-ut-iNg"/>
+                                    <constraint firstAttribute="trailing" secondItem="xbs-Bu-OKN" secondAttribute="trailing" id="tsr-Hb-pJa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4O-ge-Iau" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="167" y="345.5" width="40" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ULz-mp-Ea0"/>
+                                    <constraint firstAttribute="width" constant="40" id="WIE-5s-Knj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.97447377440000005" green="0.38653028010000001" blue="0.016845859590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballClipRotate"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97447377440000005" green="0.38653028010000001" blue="0.016845859590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9ZG-36-jJc" firstAttribute="top" secondItem="wBc-lZ-gsB" secondAttribute="top" id="0pT-XA-eIu"/>
+                            <constraint firstItem="9ZG-36-jJc" firstAttribute="leading" secondItem="wBc-lZ-gsB" secondAttribute="leading" id="3xR-Cy-Xoa"/>
+                            <constraint firstItem="wBc-lZ-gsB" firstAttribute="trailing" secondItem="9ZG-36-jJc" secondAttribute="trailing" id="OCl-KM-Moc"/>
+                            <constraint firstItem="m4O-ge-Iau" firstAttribute="centerY" secondItem="9ZG-36-jJc" secondAttribute="centerY" id="S2B-KN-mjX"/>
+                            <constraint firstItem="Qbl-en-19d" firstAttribute="centerY" secondItem="aq1-oh-weQ" secondAttribute="centerY" constant="-60" id="af5-cf-Rl6"/>
+                            <constraint firstItem="Qbl-en-19d" firstAttribute="centerX" secondItem="aq1-oh-weQ" secondAttribute="centerX" id="j0t-9f-r8d"/>
+                            <constraint firstItem="wBc-lZ-gsB" firstAttribute="bottom" secondItem="9ZG-36-jJc" secondAttribute="bottom" id="mE7-ak-HRQ"/>
+                            <constraint firstItem="m4O-ge-Iau" firstAttribute="centerX" secondItem="9ZG-36-jJc" secondAttribute="centerX" id="yiu-3P-sCi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wBc-lZ-gsB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="AlayaNotes" id="Dtp-O0-MiF">
+                        <barButtonItem key="backBarButtonItem" title=" " id="xZj-rS-ULw"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="G98-OM-rQb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="loadingView" destination="m4O-ge-Iau" id="evU-9r-dqD"/>
+                        <outlet property="logoimage" destination="Qbl-en-19d" id="6uT-h1-fvu"/>
+                        <outlet property="mainview" destination="aq1-oh-weQ" id="Ihg-oK-Fhb"/>
+                        <outlet property="moreIndicator" destination="aS1-YJ-e1N" id="fS4-67-UYC"/>
+                        <outlet property="noteCountLabel" destination="NZ5-dx-6mv" id="Bpp-O8-kae"/>
+                        <outlet property="tableView" destination="YRc-c4-K8u" id="Vv5-5x-06q"/>
+                        <segue destination="Ed7-zg-0EG" kind="show" identifier="showDetail" id="Zlc-Km-8li"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YDU-z3-IZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1632.8" y="-21.139430284857571"/>
+            <point key="canvasLocation" x="1526.5" y="-90.5"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="6Hk-29-Sb1">
+            <objects>
+                <viewController title="Details" id="Ed7-zg-0EG" customClass="NoteViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xXs-Gq-MDt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ICJ-gv-0oL">
+                                <rect key="frame" x="0.0" y="311" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="R6v-tq-FHk"/>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FF9-yf-ycg">
+                                <rect key="frame" x="10" y="74" width="360" height="583"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ed7-zg-0EG" id="Gel-BO-MiW"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wnz-01-o8e" firstAttribute="bottom" secondItem="FF9-yf-ycg" secondAttribute="bottom" constant="10" id="7eK-P1-cNB"/>
+                            <constraint firstItem="FF9-yf-ycg" firstAttribute="leading" secondItem="wnz-01-o8e" secondAttribute="leading" constant="10" id="Fud-3U-AS9"/>
+                            <constraint firstItem="FF9-yf-ycg" firstAttribute="top" secondItem="wnz-01-o8e" secondAttribute="top" constant="10" id="Iao-q8-u93"/>
+                            <constraint firstItem="wnz-01-o8e" firstAttribute="trailing" secondItem="FF9-yf-ycg" secondAttribute="trailing" constant="5" id="qbu-ce-KfL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wnz-01-o8e"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomContraint" destination="7eK-P1-cNB" id="mtq-5K-wb9"/>
+                        <outlet property="detailView" destination="FF9-yf-ycg" id="Y9Z-MN-JFK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kis-Vd-LWI" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2343.1999999999998" y="-90.404797601199405"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="axl-li-dWk">
+            <objects>
+                <navigationController restorationIdentifier="introNavigatoin" storyboardIdentifier="introNavigatoin" automaticallyAdjustsScrollViewInsets="NO" id="0FR-tk-JoC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x6H-qH-3Uc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.97447377440000005" green="0.38653028010000001" blue="0.016845859590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FvK-VP-Ax4" kind="relationship" relationship="rootViewController" id="o5F-0G-HuP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hr0-VD-day" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="588" y="-90.404797601199405"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="alayalogo.png" width="352" height="172"/>
+    </resources>
 </document>

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8429C9C71EAECCA8004A5E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429C9C61EAECCA8004A5E2B /* AppDelegate.swift */; };
+		7C84BBA4723EACBAC2921661 /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF910FF96523607C3884978C /* Pods_TestApp.framework */; };
+		8429C9C71EAECCA8004A5E2B /* AshppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429C9C61EAECCA8004A5E2B /* AshppDelegate.swift */; };
 		8429C9CC1EAECCA8004A5E2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8429C9CA1EAECCA8004A5E2B /* Main.storyboard */; };
 		8429C9D11EAECCA8004A5E2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8429C9D01EAECCA8004A5E2B /* Assets.xcassets */; };
 		8429C9D41EAECCA8004A5E2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8429C9D21EAECCA8004A5E2B /* LaunchScreen.storyboard */; };
@@ -16,11 +17,18 @@
 		8429C9E41EAECD48004A5E2B /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429C9E31EAECD48004A5E2B /* NoteModel.swift */; };
 		E6CAD9A32105C0AA00A6EAF0 /* alayalogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E6CAD9A22105C0AA00A6EAF0 /* alayalogo.png */; };
 		E6CAD9AB2105C30600A6EAF0 /* mockapiengine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9AA2105C30600A6EAF0 /* mockapiengine.swift */; };
+		E6CAD9B52105C92700A6EAF0 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6CAD9B32105C92700A6EAF0 /* OpenSans-SemiBold.ttf */; };
+		E6CAD9B62105C92700A6EAF0 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6CAD9B42105C92700A6EAF0 /* OpenSans-Regular.ttf */; };
+		E6CAD9B82105C97600A6EAF0 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9B72105C97600A6EAF0 /* MainController.swift */; };
+		E6CAD9BB2105CA0200A6EAF0 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9B92105CA0200A6EAF0 /* NoteTableCell.swift */; };
+		E6CAD9BC2105CA0200A6EAF0 /* NoteTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6CAD9BA2105CA0200A6EAF0 /* NoteTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A39F8254A7BAC327A7EDA4F /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		62F93751C402FAC5A12D9920 /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
 		8429C9C31EAECCA8004A5E2B /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8429C9C61EAECCA8004A5E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8429C9C61EAECCA8004A5E2B /* AshppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AshppDelegate.swift; sourceTree = "<group>"; };
 		8429C9CB1EAECCA8004A5E2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8429C9D01EAECCA8004A5E2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8429C9D31EAECCA8004A5E2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -28,8 +36,14 @@
 		8429C9DE1EAECD2C004A5E2B /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		8429C9E11EAECD34004A5E2B /* TestApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestApp.xcdatamodel; sourceTree = "<group>"; };
 		8429C9E31EAECD48004A5E2B /* NoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		CF910FF96523607C3884978C /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CAD9A22105C0AA00A6EAF0 /* alayalogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alayalogo.png; sourceTree = "<group>"; };
 		E6CAD9AA2105C30600A6EAF0 /* mockapiengine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mockapiengine.swift; sourceTree = "<group>"; };
+		E6CAD9B32105C92700A6EAF0 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		E6CAD9B42105C92700A6EAF0 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		E6CAD9B72105C97600A6EAF0 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		E6CAD9B92105CA0200A6EAF0 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
+		E6CAD9BA2105CA0200A6EAF0 /* NoteTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C84BBA4723EACBAC2921661 /* Pods_TestApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090E5AC9FBF0946DF9628FCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A39F8254A7BAC327A7EDA4F /* Pods-TestApp.debug.xcconfig */,
+				62F93751C402FAC5A12D9920 /* Pods-TestApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		13F53A9B80BEA9346666B6FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF910FF96523607C3884978C /* Pods_TestApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8429C9BA1EAECCA8004A5E2B = {
 			isa = PBXGroup;
 			children = (
 				8429C9C51EAECCA8004A5E2B /* TestApp */,
 				8429C9C41EAECCA8004A5E2B /* Products */,
+				090E5AC9FBF0946DF9628FCC /* Pods */,
+				13F53A9B80BEA9346666B6FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,12 +96,13 @@
 		8429C9C51EAECCA8004A5E2B /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				E6CAD9B22105C8E200A6EAF0 /* fonts */,
 				E6CAD9A92105C2EC00A6EAF0 /* mockrequesthelper */,
 				E6CAD9A12105BDEA00A6EAF0 /* Images */,
 				E6CAD99E2105BD5700A6EAF0 /* Views */,
 				8429C9DB1EAECD0B004A5E2B /* Controller */,
 				8429C9DC1EAECD0B004A5E2B /* Model */,
-				8429C9C61EAECCA8004A5E2B /* AppDelegate.swift */,
+				8429C9C61EAECCA8004A5E2B /* AshppDelegate.swift */,
 				8429C9D01EAECCA8004A5E2B /* Assets.xcassets */,
 				8429C9D51EAECCA8004A5E2B /* Info.plist */,
 			);
@@ -78,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				8429C9DE1EAECD2C004A5E2B /* NoteViewController.swift */,
+				E6CAD9B72105C97600A6EAF0 /* MainController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,6 +148,8 @@
 		E6CAD9A02105BD6900A6EAF0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				E6CAD9B92105CA0200A6EAF0 /* NoteTableCell.swift */,
+				E6CAD9BA2105CA0200A6EAF0 /* NoteTableCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -132,6 +170,16 @@
 			path = mockrequesthelper;
 			sourceTree = "<group>";
 		};
+		E6CAD9B22105C8E200A6EAF0 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E6CAD9B42105C92700A6EAF0 /* OpenSans-Regular.ttf */,
+				E6CAD9B32105C92700A6EAF0 /* OpenSans-SemiBold.ttf */,
+			);
+			name = fonts;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8429C9D81EAECCA8004A5E2B /* Build configuration list for PBXNativeTarget "TestApp" */;
 			buildPhases = (
+				BEB2FC613F59FB889CFB52E1 /* [CP] Check Pods Manifest.lock */,
 				8429C9BF1EAECCA8004A5E2B /* Sources */,
 				8429C9C01EAECCA8004A5E2B /* Frameworks */,
 				8429C9C11EAECCA8004A5E2B /* Resources */,
+				FDBB1B5E8BAC5E8361EC4BDC /* [CP] Embed Pods Frameworks */,
+				742200A749A1A7AE2534ADC9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,12 +246,71 @@
 			files = (
 				8429C9D41EAECCA8004A5E2B /* LaunchScreen.storyboard in Resources */,
 				E6CAD9A32105C0AA00A6EAF0 /* alayalogo.png in Resources */,
+				E6CAD9B52105C92700A6EAF0 /* OpenSans-SemiBold.ttf in Resources */,
 				8429C9D11EAECCA8004A5E2B /* Assets.xcassets in Resources */,
+				E6CAD9B62105C92700A6EAF0 /* OpenSans-Regular.ttf in Resources */,
+				E6CAD9BC2105CA0200A6EAF0 /* NoteTableCell.xib in Resources */,
 				8429C9CC1EAECCA8004A5E2B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		742200A749A1A7AE2534ADC9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestApp/Pods-TestApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEB2FC613F59FB889CFB52E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDBB1B5E8BAC5E8361EC4BDC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8429C9BF1EAECCA8004A5E2B /* Sources */ = {
@@ -209,8 +319,10 @@
 			files = (
 				8429C9DF1EAECD2C004A5E2B /* NoteViewController.swift in Sources */,
 				8429C9E21EAECD34004A5E2B /* TestApp.xcdatamodeld in Sources */,
-				8429C9C71EAECCA8004A5E2B /* AppDelegate.swift in Sources */,
+				E6CAD9BB2105CA0200A6EAF0 /* NoteTableCell.swift in Sources */,
+				8429C9C71EAECCA8004A5E2B /* AshppDelegate.swift in Sources */,
 				8429C9E41EAECD48004A5E2B /* NoteModel.swift in Sources */,
+				E6CAD9B82105C97600A6EAF0 /* MainController.swift in Sources */,
 				E6CAD9AB2105C30600A6EAF0 /* mockapiengine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +460,7 @@
 		};
 		8429C9D91EAECCA8004A5E2B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A39F8254A7BAC327A7EDA4F /* Pods-TestApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -365,6 +478,7 @@
 		};
 		8429C9DA1EAECCA8004A5E2B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62F93751C402FAC5A12D9920 /* Pods-TestApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";

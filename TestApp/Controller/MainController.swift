@@ -1,41 +1,37 @@
 //
 //  MainController.swift
-//  alayaTest
+//  TestApp
 //
-//  Created by gHOST on 21/7/18.
-//  Copyright © 2018 gHOST. All rights reserved.
+//  Created by Precious Osaro on 21/7/18.
+//  Copyright © 2018 Precious Osaro. All rights reserved.
 //
 
 import UIKit
 import NVActivityIndicatorView
 
-protocol maintableDelegate: class {
-    func saveupdate(noteValue:noteData,index:Int,from:Int)
-}
-
-
-class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource,maintableDelegate {
+class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
-    
-    
+//outlet declaration to support view
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var noteCountLabel: UILabel!
-    
     @IBOutlet weak var moreIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingView: NVActivityIndicatorView!
     @IBOutlet var mainview: UIView!
     @IBOutlet weak var logoimage: UIImageView!
+    
+    
+    
+    //variables required within the controller
     var currentPage:Int = 0
-    var NoteList:[noteData] = []
-    var transferNote:noteData?
+    var NoteList:[noteModel] = []
+    var transferNote:noteModel?
     var activeIndex:Int = 0
     var circle = UIView(
         frame: CGRect(x: 0.0, y: 0.0, width: 5, height: 5
     ))
     
     
-    
+  //animation detransles
     let translate = CGAffineTransform(translationX: 100, y: 100)
     let scale = CGAffineTransform(scaleX: -0.001, y: -0.001)
     let bigscale = CGAffineTransform(scaleX: 1, y: 1)
@@ -43,19 +39,18 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+    
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         registerCells()
         introanimation()
         fetchdata()
     }
     
-    
+    //function to fetch data from movk api while showing a block loading sign
     func fetchdata(){
         self.moreIndicator.isHidden = true
         self.loadingView.startAnimating()
-        WebRequest.sharedManager.fetchData(page: self.currentPage) { (result) in
+        Mockapiengine.sharedManager.fetchData(page: self.currentPage) { (result) in
             self.NoteList.append(contentsOf: result)
             self.loadingView.stopAnimating()
             self.prepareview()
@@ -63,10 +58,13 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
+    
+    //function to fetch data with out showing loading sign
+    //this is used to fetch more on arriving at the last cell
     func fetchdatasilent(){
         self.moreIndicator.isHidden = false
         self.moreIndicator.startAnimating()
-        WebRequest.sharedManager.fetchData(page: self.currentPage) { (result) in
+        Mockapiengine.sharedManager.fetchData(page: self.currentPage) { (result) in
             self.NoteList.append(contentsOf: result)
             self.prepareview()
             self.moreIndicator.stopAnimating()
@@ -75,10 +73,13 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
+    //prepare view for note count
     func prepareview(){
         noteCountLabel.text = "\(self.NoteList.count) Notes"
         self.tableView.reloadData()
     }
+    
+    //animation details
     func introanimation(){
         self.circle = UIView(
             frame: CGRect(x: 0.0, y: 0.0, width: (mainview.bounds.height * 3), height: (mainview.bounds.height * 3)
@@ -103,39 +104,17 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
         })
     }
+    
+    //registration of cells required by table
     func registerCells(){
         let nib = UINib(nibName: "NoteTableCell", bundle:nil)
         self.tableView.register(nib, forCellReuseIdentifier: "NoteTableCell")
     }
     
-    
-    func saveupdate(noteValue: noteData,index:Int,from:Int) {
-        if(from == 0){
-            if(index < self.NoteList.count){
-                self.NoteList.remove(at: index)
-            }
-            
-            self.NoteList.insert(noteValue, at: 0)
-            self.tableView.reloadData()
-        }
-        
-    }
-    
+  
+
     
     @IBAction func ComposeNewNote(_ sender: Any) {
-        
-        let df = DateFormatter()
-        df.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        let date_value = df.string(from: Date())
-        let intergervalue = WebRequest.sharedManager.dataHold.count
-        
-        let newNote:noteData = noteData(id: (intergervalue+1), date_created: date_value, last_modified: date_value, title: "Unsaved \(intergervalue+1)", detail: "")
-        
-        self.activeIndex = intergervalue
-        self.transferNote = newNote
-        
-        self.performSegue(withIdentifier: "showDetail", sender: self)
-        
         
     }
     
@@ -180,16 +159,16 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
+    
+    //preparation of seque for tabke
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
-        if let destinationViewController = segue.destination as? ViewController {
+        if let destinationViewController = segue.destination as? NoteViewController {
             
             destinationViewController.Data = self.transferNote
             destinationViewController.index = self.activeIndex
             destinationViewController.fromCont = 0
-            destinationViewController.delegate = self
-            
+          
         }
         
     }

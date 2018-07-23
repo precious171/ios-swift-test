@@ -1,9 +1,9 @@
 //
-//  NoteData.swift
-//  alayaTest
+
+//  alaya test
 //
-//  Created by gHOST on 22/7/18.
-//  Copyright © 2018 gHOST. All rights reserved.
+//  Created by Precious Osato  on 22/7/18.
+//  Copyright © 2018 Precious Osaro . All rights reserved.
 //
 import Foundation
 struct noteModel:Codable {
