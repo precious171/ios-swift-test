@@ -182,6 +182,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="xZj-rS-ULw"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="G98-OM-rQb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="DMF-a3-yXW" kind="show" id="d5Y-ws-F3y"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -197,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YDU-z3-IZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1526.5" y="-90.5"/>
+            <point key="canvasLocation" x="1462" y="-114"/>
         </scene>
         <!--Details-->
         <scene sceneID="6Hk-29-Sb1">
@@ -241,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kis-Vd-LWI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2343.1999999999998" y="-90.404797601199405"/>
+            <point key="canvasLocation" x="2220" y="654"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="axl-li-dWk">
@@ -271,9 +274,38 @@
             </objects>
             <point key="canvasLocation" x="588" y="-90.404797601199405"/>
         </scene>
+        <!--Search Controller-->
+        <scene sceneID="1Fl-6a-za4">
+            <objects>
+                <tableViewController id="DMF-a3-yXW" customClass="SearchController" customModule="alayaTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fhX-uT-KQi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="0fS-vq-y28">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <connections>
+                            <outlet property="dataSource" destination="DMF-a3-yXW" id="cmq-nQ-0Zr"/>
+                            <outlet property="delegate" destination="DMF-a3-yXW" id="s0E-ZV-Bh4"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="Ed7-zg-0EG" kind="show" identifier="showDetail" id="TxU-8t-vlX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="djr-aG-fM6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2249" y="-305"/>
+        </scene>
     </scenes>
     <resources>
         <image name="alayalogo.png" width="352" height="172"/>
         <image name="hintvideo.gif" width="480" height="344"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TxU-8t-vlX"/>
+    </inferredMetricsTieBreakers>
 </document>
