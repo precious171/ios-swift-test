@@ -14,19 +14,17 @@ class NoteTableCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     
-    func initView(celldata:noteModel){
+    func initView(celldata:Notes){
         
         
         
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "UTC")! as TimeZone
-        let date = dateFormatter.date(from: celldata.last_modified!)
+        
         
         dateFormatter.dateFormat = "EEE, MMM d, yyyy h:mm a"
         dateFormatter.timeZone = NSTimeZone(name: "UTC")! as TimeZone
-        let dateStamp = dateFormatter.string(from: date!)
+        let dateStamp = dateFormatter.string(from: celldata.last_modified!)
         self.dateLabel.text = dateStamp
         
         

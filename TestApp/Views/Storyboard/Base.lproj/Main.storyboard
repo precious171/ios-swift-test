@@ -95,26 +95,27 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <view key="tableFooterView" contentMode="scaleToFill" id="GFi-qd-Bzl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aS1-YJ-e1N">
-                                                    <rect key="frame" x="177.5" y="15" width="20" height="20"/>
-                                                    <color key="color" red="0.97447377440000005" green="0.38653028010000001" blue="0.016845859590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </activityIndicatorView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstItem="aS1-YJ-e1N" firstAttribute="centerX" secondItem="GFi-qd-Bzl" secondAttribute="centerX" id="M62-dP-RDz"/>
-                                                <constraint firstItem="aS1-YJ-e1N" firstAttribute="top" secondItem="GFi-qd-Bzl" secondAttribute="top" constant="15" id="Oni-l7-FL4"/>
-                                            </constraints>
-                                        </view>
                                         <connections>
                                             <outlet property="dataSource" destination="FvK-VP-Ax4" id="jpA-6p-nRJ"/>
                                             <outlet property="delegate" destination="FvK-VP-Ax4" id="ZVu-SA-tow"/>
                                         </connections>
                                     </tableView>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="igd-VE-QoO">
+                                        <rect key="frame" x="0.0" y="450" width="375" height="109"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note is empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKo-fG-54g">
+                                                <rect key="frame" x="126.5" y="206.5" width="123.5" height="26"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="19"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="xKo-fG-54g" firstAttribute="centerY" secondItem="igd-VE-QoO" secondAttribute="centerY" constant="-60" id="nZ6-ml-sDY"/>
+                                            <constraint firstItem="xKo-fG-54g" firstAttribute="centerX" secondItem="igd-VE-QoO" secondAttribute="centerX" id="p0L-Cc-pR1"/>
+                                        </constraints>
+                                    </view>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbs-Bu-OKN">
                                         <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                                         <items>
@@ -143,14 +144,18 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="NZ5-dx-6mv" firstAttribute="centerX" secondItem="xbs-Bu-OKN" secondAttribute="centerX" id="2ND-b3-2Ph"/>
+                                    <constraint firstAttribute="trailing" secondItem="igd-VE-QoO" secondAttribute="trailing" id="8jK-kM-KOg"/>
                                     <constraint firstItem="NZ5-dx-6mv" firstAttribute="centerY" secondItem="xbs-Bu-OKN" secondAttribute="centerY" id="UUg-dg-4MW"/>
                                     <constraint firstAttribute="bottom" secondItem="xbs-Bu-OKN" secondAttribute="bottom" id="Uoq-ow-oJ4"/>
                                     <constraint firstItem="xbs-Bu-OKN" firstAttribute="leading" secondItem="9ZG-36-jJc" secondAttribute="leading" id="VsY-yN-xrD"/>
                                     <constraint firstItem="YRc-c4-K8u" firstAttribute="top" secondItem="9ZG-36-jJc" secondAttribute="top" id="ev3-Ia-9E4"/>
+                                    <constraint firstItem="igd-VE-QoO" firstAttribute="leading" secondItem="9ZG-36-jJc" secondAttribute="leading" id="hex-ac-yx7"/>
                                     <constraint firstItem="YRc-c4-K8u" firstAttribute="leading" secondItem="9ZG-36-jJc" secondAttribute="leading" id="llQ-en-7Xa"/>
                                     <constraint firstAttribute="bottom" secondItem="YRc-c4-K8u" secondAttribute="bottom" id="q3a-Sh-f5Y"/>
                                     <constraint firstAttribute="trailing" secondItem="YRc-c4-K8u" secondAttribute="trailing" id="q9r-ut-iNg"/>
+                                    <constraint firstItem="xbs-Bu-OKN" firstAttribute="top" secondItem="igd-VE-QoO" secondAttribute="bottom" id="qCG-5Y-poX"/>
                                     <constraint firstAttribute="trailing" secondItem="xbs-Bu-OKN" secondAttribute="trailing" id="tsr-Hb-pJa"/>
+                                    <constraint firstItem="igd-VE-QoO" firstAttribute="top" secondItem="9ZG-36-jJc" secondAttribute="top" id="ysV-Ep-f11"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4O-ge-Iau" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
@@ -191,10 +196,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyView" destination="igd-VE-QoO" id="RtM-Ag-ZQd"/>
                         <outlet property="loadingView" destination="m4O-ge-Iau" id="evU-9r-dqD"/>
                         <outlet property="logoimage" destination="Qbl-en-19d" id="6uT-h1-fvu"/>
                         <outlet property="mainview" destination="aq1-oh-weQ" id="Ihg-oK-Fhb"/>
-                        <outlet property="moreIndicator" destination="aS1-YJ-e1N" id="fS4-67-UYC"/>
                         <outlet property="noteCountLabel" destination="NZ5-dx-6mv" id="Bpp-O8-kae"/>
                         <outlet property="tableView" destination="YRc-c4-K8u" id="Vv5-5x-06q"/>
                         <segue destination="Ed7-zg-0EG" kind="show" identifier="showDetail" id="Zlc-Km-8li"/>
@@ -203,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YDU-z3-IZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1462" y="-114"/>
+            <point key="canvasLocation" x="1461.5999999999999" y="-114.69265367316342"/>
         </scene>
         <!--Details-->
         <scene sceneID="6Hk-29-Sb1">
@@ -309,6 +314,6 @@
         <image name="hintvideo.gif" width="480" height="344"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TxU-8t-vlX"/>
+        <segue reference="Zlc-Km-8li"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,6 +16,7 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     var Data:noteModel?
     var index:Int?
     var fromCont:Int?
+    var actionType:Int?
     var delegate:maintableDelegate?
     
     override func viewDidLoad() {
@@ -42,7 +43,7 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         let df = DateFormatter()
         df.dateFormat = "YYYY-MM-dd HH:mm:ss"
         self.Data?.last_modified = df.string(from: Date())
-        self.delegate?.saveupdate(noteValue: Data!, index: self.index!,from:self.fromCont!)
+       self.delegate?.saveupdate(noteValue: Data!, index: self.index!,from:self.fromCont!)
     }
     
     

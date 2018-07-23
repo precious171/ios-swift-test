@@ -12,13 +12,15 @@ import UIKit
 
 class SearchController: UITableViewController,UISearchBarDelegate,maintableDelegate {
     
-    var allData:[noteModel] = []
-    var filteredModels:[noteModel] = []
+    
+    
+    var filteredModels:[Notes] = []
     var activeIndex:Int  = 0
     var transferNote:noteModel?
+    var delegate:maintableDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        allData = Mockapiengine.sharedManager.dataHold
+       
         registerCells()
         
         
@@ -71,15 +73,25 @@ class SearchController: UITableViewController,UISearchBarDelegate,maintableDeleg
     }
     
     
+   
+    
     
     func saveupdate(noteValue: noteModel,index:Int,from:Int) {
         if(from == 1){
             
-            
-            let indexMain = allData.index(where: {$0.id == noteValue.id })
-            allData.remove(at: indexMain!)
-            allData.insert(noteValue, at: 0)
-            self.filteredModels[index] = noteValue
+            let updateNote = self.filteredModels[self.activeIndex]
+            updateNote.title = noteValue.title
+            updateNote.detail = noteValue.detail
+            updateNote.last_modified = Date()
+            DatabaseHelper.sharedManager.updateData(noteData: updateNote) { (result) in
+                if(result){
+                    self.delegate?.reloadrequest()
+                    self.filteredModels[self.activeIndex] = updateNote
+                    self.tableView.reloadData()
+                }else{
+                    
+                }
+            }
         }
     }
     
@@ -97,10 +109,10 @@ class SearchController: UITableViewController,UISearchBarDelegate,maintableDeleg
     }
     
     func filterRowsForSearchedText(_ searchText: String) {
-        filteredModels = allData.filter({( model : noteModel) -> Bool in
-            return model.title!.lowercased().contains(searchText.lowercased())||model.detail!.lowercased().contains(searchText.lowercased())
-        })
-        tableView.reloadData()
+        DatabaseHelper.sharedManager.searchata(searchValue: searchText) { (result) in
+          self.filteredModels = result
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -117,7 +129,9 @@ class SearchController: UITableViewController,UISearchBarDelegate,maintableDeleg
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func reloadrequest() {
+        
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -136,13 +150,14 @@ class SearchController: UITableViewController,UISearchBarDelegate,maintableDeleg
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteTableCell", for: indexPath) as! NoteTableCell
-        cell.initView(celldata: self.filteredModels[indexPath.row])
+       cell.initView(celldata: self.filteredModels[indexPath.row])
         return cell
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.transferNote = self.filteredModels[indexPath.row]
+        let noteElement = self.filteredModels[indexPath.row]
+        self.transferNote = noteModel(id: Int(noteElement.id), date_created: "", last_modified: "", title: noteElement.title!, detail: noteElement.detail!)
         self.activeIndex = indexPath.row
         self.performSegue(withIdentifier: "showDetail", sender: self)
     }

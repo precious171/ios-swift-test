@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 protocol maintableDelegate: class {
     func saveupdate(noteValue:noteModel,index:Int,from:Int)
+    func reloadrequest()
 }
 
 
@@ -23,14 +24,16 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var loadingView: NVActivityIndicatorView!
     @IBOutlet var mainview: UIView!
     @IBOutlet weak var logoimage: UIImageView!
+    @IBOutlet weak var emptyView: UIView!
     
     
     
     //variables required within the controller
     var currentPage:Int = 0
-    var NoteList:[noteModel] = []
+    var NoteList:[Notes] = []
     var transferNote:noteModel?
     var activeIndex:Int = 0
+    var actionType:Int = 0
     var circle = UIView(
         frame: CGRect(x: 0.0, y: 0.0, width: 5, height: 5
     ))
@@ -44,7 +47,7 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        self.tableView.tableFooterView = UIView()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         registerCells()
         introanimation()
@@ -60,19 +63,38 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //function to fetch data from movk api while showing a block loading sign
     func fetchdata(){
-        self.moreIndicator.isHidden = true
+       
         self.loadingView.startAnimating()
-        Mockapiengine.sharedManager.fetchData(page: self.currentPage) { (result) in
-            self.NoteList.append(contentsOf: result)
+        
+        
+        DatabaseHelper.sharedManager.fetchData { (result) in
+             self.NoteList = result
+            if(result.count <= 0){
+                self.emptyView.isHidden = false
+            }else{
+                self.emptyView.isHidden = true
+            }
             self.loadingView.stopAnimating()
-            self.prepareview()
-            self.currentPage += 1
+              self.prepareview()
         }
+      
     }
     
     
+   func reloadrequest(){
+    DatabaseHelper.sharedManager.fetchData { (result) in
+        self.NoteList = result
+        if(result.count <= 0){
+            self.emptyView.isHidden = false
+        }else{
+            self.emptyView.isHidden = true
+        }
+        self.prepareview()
+    }
+    }
     //function to fetch data with out showing loading sign
     //this is used to fetch more on arriving at the last cell
+    /*
     func fetchdatasilent(){
         self.moreIndicator.isHidden = false
         self.moreIndicator.startAnimating()
@@ -84,6 +106,8 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.currentPage += 1
         }
     }
+    
+    */
     
     //prepare view for note count
     func prepareview(){
@@ -128,17 +152,30 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     
     //function implementation to update note
-    func saveupdate(noteValue: noteModel,index:Int,from:Int) {
-        if(from == 0){
-            if(index < self.NoteList.count){
-                self.NoteList.remove(at: index)
+    func saveupdate(noteValue:noteModel,index:Int,from:Int) {
+         if(from == 0){
+        if(actionType == 1){
+            DatabaseHelper.sharedManager.addData(noteData: noteValue) { (result) in
+                if(result){
+                    self.fetchdata()
+                }else{
+                    self.fetchdata()
+                }
             }
-            
-            self.NoteList.insert(noteValue, at: 0)
-            self.tableView.reloadData()
-            self.prepareview()
+        }else{
+            let updateNote = self.NoteList[self.activeIndex]
+            updateNote.title = noteValue.title
+            updateNote.detail = noteValue.detail
+            updateNote.last_modified = Date()
+            DatabaseHelper.sharedManager.updateData(noteData: updateNote) { (result) in
+                if(result){
+                    self.fetchdata()
+                }else{
+                    self.fetchdata()
+                }
+            }
         }
-        
+        }
     }
     
     
@@ -149,10 +186,11 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let date_value = df.string(from: Date())
         let intergervalue =  Mockapiengine.sharedManager.dataHold.count
         
-        let newNote:noteModel = noteModel(id: (intergervalue+1), date_created: date_value, last_modified: date_value, title: "Unsaved \(intergervalue+1)", detail: "")
+        let newNote:noteModel = noteModel(id: Int(Date().timeIntervalSince1970), date_created: date_value, last_modified: date_value, title: "Unsaved \(Int(Date().timeIntervalSince1970))", detail: "")
         
         self.activeIndex = intergervalue
         self.transferNote = newNote
+        self.actionType = 1
         
         self.performSegue(withIdentifier: "showDetail", sender: self)
     }
@@ -162,7 +200,7 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             // delete item at indexPath
             
             CATransaction.begin()
@@ -175,9 +213,14 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 // Code to be executed upon completion
             }
             
-            self.NoteList.remove(at: indexPath.row)
-           tableView.deleteRows(at: [indexPath], with: .left)
-            
+            DatabaseHelper.sharedManager.deleteData(noteData: self.NoteList[indexPath.row] , completion: { (result) in
+                if(true){
+                    self.NoteList.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .left)
+                    
+                }
+            })
+           
             
             tableView.endUpdates()
             CATransaction.commit()
@@ -200,20 +243,23 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return cell
     }
     
-    
+   /*
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastSectionIndex = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
         if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
-            fetchdatasilent()
+          //  fetchdatasilent()
             
         }
     }
-    
+    */
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.transferNote = self.NoteList[indexPath.row]
+       let noteElement = self.NoteList[indexPath.row]
+        self.transferNote = noteModel(id: Int(noteElement.id), date_created: "", last_modified: "", title: noteElement.title!, detail: noteElement.detail!)
+        
+        self.actionType = 0
         self.activeIndex = indexPath.row
         self.performSegue(withIdentifier: "showDetail", sender: self)
     }
@@ -239,8 +285,15 @@ class MainController: UIViewController,UITableViewDelegate,UITableViewDataSource
             destinationViewController.Data = self.transferNote
             destinationViewController.index = self.activeIndex
             destinationViewController.fromCont = 0
+            destinationViewController.actionType = self.actionType
             destinationViewController.delegate = self
+        }else if let destinationViewController = segue.destination as? SearchController {
+                
+            
+                destinationViewController.delegate = self
         }
+        
+        
         
     }
 }

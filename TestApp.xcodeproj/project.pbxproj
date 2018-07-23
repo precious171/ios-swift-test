@@ -26,6 +26,7 @@
 		E6CAD9C32105DA4600A6EAF0 /* hintvideo.gif in Resources */ = {isa = PBXBuildFile; fileRef = E6CAD9C22105DA4600A6EAF0 /* hintvideo.gif */; };
 		E6CAD9C52105DC7A00A6EAF0 /* HintController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9C42105DC7A00A6EAF0 /* HintController.swift */; };
 		E6CAD9C72105DF1300A6EAF0 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9C62105DF1300A6EAF0 /* SearchController.swift */; };
+		E6CAD9CA2105E61800A6EAF0 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CAD9C92105E61800A6EAF0 /* DatabaseHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		E6CAD9C22105DA4600A6EAF0 /* hintvideo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hintvideo.gif; sourceTree = "<group>"; };
 		E6CAD9C42105DC7A00A6EAF0 /* HintController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintController.swift; sourceTree = "<group>"; };
 		E6CAD9C62105DF1300A6EAF0 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		E6CAD9C92105E61800A6EAF0 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		8429C9C51EAECCA8004A5E2B /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				E6CAD9C82105E5E400A6EAF0 /* databaseHelper */,
 				E6CAD9BD2105D78200A6EAF0 /* extension */,
 				E6CAD9B22105C8E200A6EAF0 /* fonts */,
 				E6CAD9A92105C2EC00A6EAF0 /* mockrequesthelper */,
@@ -198,6 +201,14 @@
 				E6CAD9BE2105D7B100A6EAF0 /* extensions.swift */,
 			);
 			path = extension;
+			sourceTree = "<group>";
+		};
+		E6CAD9C82105E5E400A6EAF0 /* databaseHelper */ = {
+			isa = PBXGroup;
+			children = (
+				E6CAD9C92105E61800A6EAF0 /* DatabaseHelper.swift */,
+			);
+			path = databaseHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +354,7 @@
 				8429C9DF1EAECD2C004A5E2B /* NoteViewController.swift in Sources */,
 				E6CAD9C72105DF1300A6EAF0 /* SearchController.swift in Sources */,
 				8429C9E21EAECD34004A5E2B /* TestApp.xcdatamodeld in Sources */,
+				E6CAD9CA2105E61800A6EAF0 /* DatabaseHelper.swift in Sources */,
 				E6CAD9BB2105CA0200A6EAF0 /* NoteTableCell.swift in Sources */,
 				E6CAD9BF2105D7B100A6EAF0 /* extensions.swift in Sources */,
 				E6CAD9C52105DC7A00A6EAF0 /* HintController.swift in Sources */,
